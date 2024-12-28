@@ -1,0 +1,43 @@
+<odoo>
+    <record id="view_library_member_tree" model="ir.ui.view">
+        <field name="name">library.member.tree</field>
+        <field name="model">library.member</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Member Name"/>
+                <field name="email" string="Email"/>
+                <field name="phone" string="Phone"/>
+                <field name="membership_date" string="Membership Date"/>
+                <field name="status" string="Status"/>
+                <field name="con_books" widget="many2many_tags" string="Borrowed Books" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_library_member_form" model="ir.ui.view">
+        <field name="name">library.member.form</field>
+        <field name="model">library.member</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" string="Full Name"/>
+                        <field name="email" string="Email"/>
+                        <field name="phone" string="Phone"/>
+                        <field name="membership_date" string="Membership Date"/>
+                        <field name="status" string="Status"/>
+                        <field name="con_books" widget="many2many_tags" string="Borrowed Books" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_library_member" model="ir.actions.act_window">
+        <field name="name">Library Members</field>
+        <field name="res_model">library.member</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_library_member" name="Members" parent="menu_library_root" action="action_library_member" sequence="2"/>
+</odoo>

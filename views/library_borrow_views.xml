@@ -1,0 +1,45 @@
+<odoo>
+    <record id="view_library_borrow_tree" model="ir.ui.view">
+        <field name="name">library.borrow.tree</field>
+        <field name="model">library.borrow</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="member_id" string="Member"/>
+                <field name="book_id" string="Book"/>
+                <field name="quantity_borrowed" string="Quantity Borrowed"/>
+                <field name="borrow_date" string="Borrow Date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_library_borrow_form" model="ir.ui.view">
+        <field name="name">library.borrow.form</field>
+        <field name="model">library.borrow</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="member_id" string="Member"/>
+                        <field name="book_id" string="Book"/>
+                        <field name="quantity_borrowed" string="Quantity Borrowed"/>
+                        <field name="borrow_date" string="Borrow Date"/>
+                    </group>
+
+                    <footer>
+                        <button name="borrow_book" string="Borrow Book" type="object" class="btn-primary"/>
+                        <button name="return_book" string="Return Book" type="object" class="btn-danger"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_library_borrow" model="ir.actions.act_window">
+        <field name="name">Library Borrow</field>
+        <field name="res_model">library.borrow</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_library_borrow_tree"/>
+    </record>
+
+    <menuitem id="menu_library_borrow" name="Borrow Books" parent="menu_library_root" action="action_library_borrow" sequence="3"/>
+</odoo>
